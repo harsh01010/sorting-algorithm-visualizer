@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+
+  @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 *{
     margin: 0;
     padding: 0;
@@ -24,10 +27,16 @@ a{
     display: inline-block;
 }
 :root{
-    --primary-text-color:#183b56;
-    --seconday-text-color:#577592;
+    
 }
 
+h1{
+    font-size: 2.5rem;
+}
+body{
+   background-color: rgba(57, 167, 255, 0.9);
+   color: white;
+}
 /*******************************************************************/
 .container{
     min-height: 100vh;
@@ -35,10 +44,10 @@ a{
     flex-direction: column;
     justify-content: center;
 
-    background-color: red;
+    /* background-color: red; */
 }
 .top{
-    background-color: yellow;
+    /* background-color: yellow; */
     height: 30vh;
     display: flex;
     flex-direction: column;
@@ -46,15 +55,103 @@ a{
 }
 
 .bottom{
-    background-color: green;
+    /* background-color: green; */
     height: 70vh;
 }
+/****************************************************************************/
 
 nav{
-    background-color: white;
-    height: 40px;
+    background-color: rgba(0, 0, 0, 0.4);
+    height: 55px;
+    
 }
+nav>ul{
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 4vw;
+    padding-right: 4vw;
+}
+/***************************************************************************/
+
+.ham{
+    
+   width:38px;
+   height:5px;
+   background-color: #fff;
+   position: relative;
+   cursor: pointer;
+   transition: all  1.5s
+}
+.ham::before,
+.ham::after {
+    content: '';
+    display: block;
+    width: 100%; /* Set the width to 100% */
+    height: 5px; /* Set the height */
+    background-color: #fff;
+    position: absolute;
+}
+.ham::before {
+    top: -10px;
+}
+.ham::after {
+    bottom: -10px;
+}
+.ham:active{
+    transform: scale3d(1.2,1.2,1.2);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .controls{
     background-color: wheat;
     height: 60px;
 }
+
+
+
+
+
+
+
+@media screen and (max-width: 768px) {
+    nav>ul{
+        padding-top: 1.5vh;
+        padding-left: 2vw;
+        padding-right: 2vw;
+
+    }
+    .nav-head{
+        font-size: 1.8rem;
+    }
+  }
+  @media screen and (max-width: 340px) {
+      nav{
+        height: 110px;
+    }
+    nav>ul{
+        flex-direction: column;
+        
+    }
+    .ham{
+        margin-top: 12px;}
+        .nav-head{
+            margin-top: 20px;
+        }
+    }

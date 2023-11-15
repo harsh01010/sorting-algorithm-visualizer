@@ -1,31 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sorting-algorithm-visualizer</title>
     <link rel="stylesheet" href="./style.css">
-    
+
 </head>
+
 <body>
     <div class="container">
-        <div class="top"> 
-            
-        <nav>
-            <ul>
-                <li class="ham"></li>
-                <li><h1 class="nav-head">Sorting Visualizer</h2></li>
-            </ul>
-        </nav>
-        <div class="controls">
+        <div class="top">
+
+            <nav>
+                <ul>
+                    <li class="ham"></li>
+                    <li>
+                        <h1 class="nav-head">Sorting Visualizer</h2>
+                    </li>
+                </ul>
+            </nav>
+            <div class="navigation">
+                <ul class="algos">
+                    <li>Bubble Sort</li>
+                    <li>Insertion Sort</li>
+                    <li>Selection Sort</li>
+                    <li>Merge Sort</li>
+                    <li>Quick Sort</li>
+                    <li>Heap Sort</li>
+                    <li>Counting Sort</li>
+                </ul>
+                <div class="links">
+
+                    <i class="fa-brands fa-github fa-2xl"></i>
+                </div>
+            </div>
+            <div class="controls">
+                <div class="cont">
+                    <span class="algo">Sorting Algo</span>
+                    <div class="commands">
+                        <i class="fa-solid fa-shuffle fa-2xl" style="color: #000000;"></i>
+                        <i class="fa-solid fa-play fa-2xl" style="color: #000000;"></i>
+                        <span class="slider"><label for="points" id="label">Size:</label>
+                            <input type="range" id="points" name="points" value="40" min="1" max="100">
+                        </span>
+                    </div>
+                </div>
+
+            </div>
 
         </div>
+        <div class="animation">
+            <div class="bars" style="background-color: wheat;">
 
-        </div>
-        <div class="bottom">
-
+            </div>
         </div>
     </div>
-    
+
+    <script src="./script.js"></script>
+    <script src="https://kit.fontawesome.com/cdbc65c6fb.js" crossorigin="anonymous"></script>
+
 </body>
+
 </html>

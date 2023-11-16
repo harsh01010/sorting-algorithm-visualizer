@@ -157,7 +157,7 @@ nav>ul {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    transition: all 0.8s ease-out;   
+    transition: all 0.7s ease-out;   
 }
 .algos{
 

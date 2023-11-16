@@ -1,5 +1,4 @@
 //hamburger  menu
-
 let ham = document.querySelector(".ham");
 let navigation = document.querySelector(".navigation");
 
@@ -7,6 +6,11 @@ ham.addEventListener("click", function () {
   navigation.classList.toggle("visible");
 });
 
+function openTab() {
+  window.open("https://github.com/harsh01010/sorting-algorithm-visualizer", "_blank");
+  }
+
+document.querySelector(".fa-github").addEventListener("click",openTab);
 
 // make the menu invisible
 

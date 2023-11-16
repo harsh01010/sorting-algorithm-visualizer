@@ -9,13 +9,14 @@ ham.addEventListener("click", function () {
 });
 
 
-// global use functions
+// global use functions and variables
 
 function generateRandom(start,end)
 {
   return Math.floor(Math.random()*(end-start+1)) +start;
 }
 
+let curr_function = ``;
 // generating bars
 let arr = [];
 //adjusting the slider for the fitting the bars according to the screen width.
@@ -89,24 +90,57 @@ rangeInp.addEventListener("change",function(){
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
-async function bubbleSort(){
-  for(let i=0;i<arr.length-1;i++){
-    for(let j=0;j<arr.length-i-1;j++)
-    {
-      if(arr[j]>arr[j+1])
+
+const sort = {
+  BubbleSort: async function BubbleSort(){
+    for(let i=0;i<arr.length-1;i++){
+      for(let j=0;j<arr.length-i-1;j++)
       {
-        let bar = document.querySelectorAll(".bar");
-        bar[j].style.backgroundColor = 'red';
-        bar[j+1].style.backgroundColor = 'red';
-        await sleep(100);
-        let temp = arr[j];
-        arr[j] = arr[j+1];
-        arr[j+1] = temp;
-        renderBars();
-        console.log("hello");
+        if(arr[j]>arr[j+1])
+        {
+          let bar = document.querySelectorAll(".bar");
+          bar[j].style.backgroundColor = 'red';
+          bar[j+1].style.backgroundColor = 'red';
+          await sleep(100);
+          let temp = arr[j];
+          arr[j] = arr[j+1];
+          arr[j+1] = temp;
+          renderBars();
+          console.log("hello");
+        }
       }
     }
   }
-}
 
-bubbleSort();
+};
+
+
+//shuffling
+document.querySelector(".fa-shuffle").addEventListener("click",generateArray);
+
+
+//selecting the algo
+const algos = document.querySelectorAll(".sort-algo-pick");
+
+algos.forEach(algo=>{
+  algo.addEventListener("click",()=>{
+    let temp_algo  = algo.innerText;
+    curr_function=temp_algo.replace(/\s/g, '');
+    document.querySelector(".algo").innerText = algo.innerText;
+  })
+})
+
+
+//playing
+
+document.querySelector(".fa-play").addEventListener("click",()=>{
+  if(curr_function === ``)
+  {  alert("Please Select an Algorithm!");
+    document.querySelector(".algo").innerText = 'Select Algo First!'
+
+}
+  else{
+    sort[curr_function]();
+  }
+});
+

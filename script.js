@@ -4,9 +4,19 @@ let ham = document.querySelector(".ham");
 let navigation = document.querySelector(".navigation");
 
 ham.addEventListener("click", function () {
-  console.log("hello world\n");
   navigation.classList.toggle("visible");
 });
+
+
+// make the menu invisible
+
+function invis(){
+  if(navigation.classList.contains("visible"))
+  navigation.classList.remove("visible");
+}
+// document.querySelector(".controls").addEventListener("click",invis);
+document.querySelector(".animation").addEventListener("click",invis);
+
 
 
 // global use functions and variables
@@ -80,9 +90,18 @@ function renderBars(){
 }
 // controlling the slider
 const rangeInp = document.querySelector('#points');
-rangeInp.addEventListener("change",function(){
-  generateArray();
-},false)
+
+function sizeEnable()
+{
+  rangeInp.addEventListener("change",generateArray)
+}
+sizeEnable();
+function sizeDisable()
+{
+  rangeInp.removeEventListener("change",generateArray);
+}
+
+
 
 
 //sorting
@@ -90,9 +109,12 @@ rangeInp.addEventListener("change",function(){
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
-
 const sort = {
   BubbleSort: async function BubbleSort(){
+    isSorting = true;
+   shuffleDisable();
+   playDisable();
+   sizeDisable();
     for(let i=0;i<arr.length-1;i++){
       for(let j=0;j<arr.length-i-1;j++)
       {
@@ -101,7 +123,7 @@ const sort = {
           let bar = document.querySelectorAll(".bar");
           bar[j].style.backgroundColor = 'red';
           bar[j+1].style.backgroundColor = 'red';
-          await sleep(100);
+          await sleep(document.querySelector("#delay").value);
           let temp = arr[j];
           arr[j] = arr[j+1];
           arr[j+1] = temp;
@@ -110,13 +132,24 @@ const sort = {
         }
       }
     }
+
+    shuffleEnable();
+    playEnable();
+    sizeEnable();
   }
+
 
 };
 
 
 //shuffling
-document.querySelector(".fa-shuffle").addEventListener("click",generateArray);
+function shuffleEnable(){
+document.querySelector(".fa-shuffle").addEventListener("click",generateArray);}
+shuffleEnable();
+
+function shuffleDisable(){
+  document.querySelector(".fa-shuffle").removeEventListener("click",generateArray);
+}
 
 
 //selecting the algo
@@ -127,20 +160,35 @@ algos.forEach(algo=>{
     let temp_algo  = algo.innerText;
     curr_function=temp_algo.replace(/\s/g, '');
     document.querySelector(".algo").innerText = algo.innerText;
+    invis();
   })
 })
 
 
 //playing
 
-document.querySelector(".fa-play").addEventListener("click",()=>{
+function play(){
   if(curr_function === ``)
   {  alert("Please Select an Algorithm!");
     document.querySelector(".algo").innerText = 'Select Algo First!'
 
 }
-  else{
+  else if(curr_function===`BubbleSort`){
     sort[curr_function]();
   }
-});
+  else{
+    document.querySelector(".algo").innerText = 'Select Bubble'
+    alert("We are Currently Implementing The Selected Algorithm,Please select Another!");
+  }
+}
+
+function playEnable(){
+  document.querySelector(".fa-play").addEventListener("click",play);
+}
+
+playEnable();
+function playDisable(){
+  document.querySelector(".fa-play").removeEventListener("click",play);
+}
+
 

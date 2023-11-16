@@ -191,23 +191,6 @@ nav>ul {
     transform: scale3d(1.2,1.2,1);
     color: black;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .controls {
     background-color: wheat;
     height: 100px;
@@ -233,10 +216,11 @@ nav>ul {
     gap: 29px;
     padding-right: 20px;
     transition: all 1.2s ease-out;
-}
-.commands:hover{
     transform: scale3d(1.2,1.2,1);
 }
+/* .commands:hover{
+    transform: scale3d(1.2,1.2,1);
+} */
 .fa-play:active{
     transform: scale3d(1.2,1.2,1);
 }
@@ -252,17 +236,6 @@ nav>ul {
     display: flex;
 
 }
-
-
-
-@media screen and(max-width:450px){
-    .commands:hover{
-        transform: scale3d(0,0,0) !important;
-    }
-    
-}
-
-
 @media screen and (max-width: 768px){
     nav>ul {
         padding-top: 1.5vh;
@@ -300,7 +273,6 @@ nav>ul {
     }
   
 }
-
 @media screen and (max-width:440px){
     #label{
         display: none; 
@@ -349,9 +321,7 @@ nav>ul {
     .commands{
         gap: 8px;
         padding-right: 0;
-    }
-    .commands:hover{
-        transform: none !important;
+        transform: none;
     }
     .bar{
         font-size: xx-small;
@@ -366,9 +336,8 @@ nav>ul {
     .cont{
         gap: 12px;
     }
+    
 }
-
-
 /*************/
 /*changing*/
 .bar{

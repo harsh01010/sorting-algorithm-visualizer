@@ -69,7 +69,7 @@ body {
 
 .animation {
     /* background-color: green; */
-    height: 70vh;
+    height: 71vh;
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -82,6 +82,9 @@ body {
     align-items: flex-end;
     gap: 5px;
     justify-content: center;
+    font-size: xx-small;
+    font-weight: lighter;
+    text-align: center;
 }
 
 /****************************************************************************/
@@ -245,6 +248,10 @@ nav>ul {
     font-weight: bold;
 }
 
+.slider{
+    display: flex;
+
+}
 
 
 
@@ -256,7 +263,7 @@ nav>ul {
 }
 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 768px){
     nav>ul {
         padding-top: 1.5vh;
         padding-left: 2vw;
@@ -279,7 +286,17 @@ nav>ul {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 18px;
+        gap: 0px;
+    }
+    .bar{
+        font-size: xx-small;
+        font-weight: 0;
+    }
+    .slider{
+        flex-direction: column;
+    }
+    .controls{
+        height: 118px;
     }
   
 }
@@ -287,6 +304,13 @@ nav>ul {
 @media screen and (max-width:440px){
     #label{
         display: none; 
+    }
+    .bar{
+        font-size: xx-small;
+        font-weight: 100;
+    }
+    .cont{
+        gap: 12px;
     }
     
 }
@@ -328,6 +352,19 @@ nav>ul {
     }
     .commands:hover{
         transform: none !important;
+    }
+    .bar{
+        font-size: xx-small;
+        font-weight: 100;
+    }
+    .slider{
+        flex-direction: column;
+    }
+    .controls{
+        height: 100px;
+    }
+    .cont{
+        gap: 12px;
     }
 }
 

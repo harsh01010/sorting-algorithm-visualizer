@@ -19,10 +19,10 @@ function generateRandom(start,end)
 // generating bars
 let arr = [];
 //adjusting the slider for the fitting the bars according to the screen width.
-window.addEventListener('resize',adjust);
+const max_siz = 70;
+const min_siz = 1;
 function adjust(){
 const width = window.innerWidth;
-
 if(width>=814){
   document.querySelector("#points").max = 100;
   document.querySelector("#points").value = 40;
@@ -45,8 +45,9 @@ generateArray();
 console.log("fired!");
 }
 
-const max_siz = 70;
-const min_siz = 1;
+adjust();
+window.addEventListener('resize',adjust);
+
 function generateArray(){
   arr = [];
   const value = document.getElementById("points").value;
@@ -55,7 +56,6 @@ function generateArray(){
     let element = generateRandom(min_siz,max_siz);
     arr.push(element);
   }
-  console.log(arr);
   renderBars();
 
 }
@@ -69,7 +69,9 @@ function renderBars(){
     let bar = document.createElement('div');
     bar.classList.add("bar");
     bar.style.width= `${width}vw`;
-    bar.style.height= `${value}vh`;
+    bar.style.height= `${value+1}vh`;
+    if(window.innerWidth>=1450){
+    bar.innerText = `${value}`;}
     container.appendChild(bar);
    // console.log(bar);
     //console.log(bar.style.width);
@@ -79,5 +81,32 @@ function renderBars(){
 const rangeInp = document.querySelector('#points');
 rangeInp.addEventListener("change",function(){
   generateArray();
-  console.log(rangeInp.value);
 },false)
+
+
+//sorting
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+async function bubbleSort(){
+  for(let i=0;i<arr.length-1;i++){
+    for(let j=0;j<arr.length-i-1;j++)
+    {
+      if(arr[j]>arr[j+1])
+      {
+        let bar = document.querySelectorAll(".bar");
+        bar[j].style.backgroundColor = 'red';
+        bar[j+1].style.backgroundColor = 'red';
+        await sleep(100);
+        let temp = arr[j];
+        arr[j] = arr[j+1];
+        arr[j+1] = temp;
+        renderBars();
+        console.log("hello");
+      }
+    }
+  }
+}
+
+bubbleSort();

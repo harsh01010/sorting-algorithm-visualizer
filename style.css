@@ -27,12 +27,10 @@ h2 {
 h3 {
     font-size: 1.5rem;
 }
-
 a {
     text-decoration: none;
     display: inline-block;
 }
-
 :root {}
 
 h1 {
@@ -47,7 +45,6 @@ body {
     opacity: 1 !important;
     visibility:visible !important;
 }
-
 /*******************************************************************/
 .container {
     min-height: 100vh;
@@ -57,7 +54,6 @@ body {
 
     /* background-color: red; */
 }
-
 .top {
     /* background-color: yellow; */
     height: 30vh;
@@ -65,7 +61,6 @@ body {
     flex-direction: column;
     justify-content: flex-start;
 }
-
 .animation {
     /* background-color: green; */
     height: 71vh;
@@ -85,15 +80,12 @@ body {
     font-weight: lighter;
     text-align: center;
 }
-
 /****************************************************************************/
-
 nav {
     background-color: rgba(0, 0, 0, 0.4);
     height: 55px;
 
 }
-
 nav>ul {
     list-style-type: none;
     display: flex;
@@ -102,9 +94,7 @@ nav>ul {
     padding-left: 4vw;
     padding-right: 4vw;
 }
-
 /***************************************************************************/
-
 .ham {
 
     width: 38px;
@@ -114,7 +104,6 @@ nav>ul {
     cursor: pointer;
     transition: all 2s ease-out;
 }
-
 .ham::before,
 .ham::after {
     content: '';
@@ -126,19 +115,15 @@ nav>ul {
     background-color: #fff;
     position: absolute;
 }
-
 .ham::before {
     top: -10px;
 }
-
 .ham::after {
     bottom: -10px;
 }
-
 .ham:active {
     transform: scale3d(2, 2, 2);
 }
-
 .navigation {
     width: 30vw;
     background-color: rgba(0, 0, 0, 0.8);
@@ -175,7 +160,6 @@ nav>ul {
     cursor: pointer;
     transition: all 0.8s ease-out;
 }
-
 .links>i:active{
     transform: scale3d(1.2,1.2,1);
 }
@@ -204,7 +188,6 @@ nav>ul {
     align-items: center;
 
 }
-
 .algo{
     font-size: xx-large;
     padding-left: 40px;
@@ -218,10 +201,6 @@ nav>ul {
     transition: all 1.2s ease-out;
     transform: scale3d(1.2,1.2,1);
 }
-/* .commands:hover{
-    transform: scale3d(1.2,1.2,1);
-} */
-
 .fa-play:active{
     transform: scale3d(1.2,1.2,1);
 }
@@ -232,7 +211,6 @@ nav>ul {
 #label{
     font-weight: bold;
 }
-
 .slider{
     display: flex;
 
@@ -287,7 +265,6 @@ nav>ul {
     }
     
 }
-
 @media screen and (max-width: 340px) {
     nav {
         height: 95px;
@@ -339,8 +316,6 @@ nav>ul {
     }
     
 }
-/*************/
-/*changing*/
 .bar{
-    background-color:rgb(6, 82, 145);
+    /* background-color:rgb(6, 82, 145); */
 }

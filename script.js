@@ -71,18 +71,20 @@ function generateArray(){
     let element = generateRandom(min_siz,max_siz);
     arr.push(element);
   }
-  renderBars();
+  renderBars(true);
 
 }
 generateArray();
 
-function renderBars(){
+function renderBars(colorChange){
   let container = document.querySelector(".bars");
   container.innerHTML = '';
   const width = 80/document.getElementById("points").value;
   arr.forEach(value=>{
     let bar = document.createElement('div');
     bar.classList.add("bar");
+    if(colorChange)
+    bar.style.backgroundColor = `rgb(6, 82, 145)`;
     bar.style.width= `${width}vw`;
     bar.style.height= `${value+1}vh`;
     if(window.innerWidth>=1450){
@@ -115,7 +117,6 @@ function sleep(ms) {
 }
 const sort = {
   BubbleSort: async function BubbleSort(){
-    isSorting = true;
    shuffleDisable();
    playDisable();
    sizeDisable();
@@ -131,7 +132,7 @@ const sort = {
           let temp = arr[j];
           arr[j] = arr[j+1];
           arr[j+1] = temp;
-          renderBars();
+          renderBars(true);
           console.log("hello");
         }
       }
@@ -140,6 +141,38 @@ const sort = {
     shuffleEnable();
     playEnable();
     sizeEnable();
+  },
+
+
+  InsertionSort: async function InsertionSort(){
+   shuffleDisable();
+   playDisable();
+   sizeDisable();
+   for(let i=0; i<arr.length; i++)
+   {  let curr = arr[i];
+    let j = i-1;
+    let bar = document.querySelectorAll(".bar");
+    //console.log(bar[j].style);
+    while(j>=0 && arr[j]>curr)
+    { 
+        bar[j].style.backgroundColor = '#ED7D31';
+        bar[j+1].style.backgroundColor = '#ED7D31';
+        renderBars(false);
+        console.log(bar[j+1].style.backgroundColor);
+      await sleep(document.querySelector("#delay").value);
+      arr[j+1] = arr[j];
+        j = j-1;
+      }
+      bar[j+1].style.backgroundColor = 'black';
+      arr[j+1] = curr;
+      await sleep(document.querySelector("#delay").value);
+      renderBars(false);
+   }
+   shuffleEnable();
+   playEnable();
+   sizeEnable();
+
+
   }
 
 
@@ -177,13 +210,13 @@ function play(){
     document.querySelector(".algo").innerText = 'Select Algo First!'
 
 }
-  else if(curr_function===`BubbleSort`){
+  else{
     sort[curr_function]();
   }
-  else{
-    document.querySelector(".algo").innerText = 'Select Bubble'
-    alert("We are Currently Implementing The Selected Algorithm,Please select Another!");
-  }
+  // else{
+  //   document.querySelector(".algo").innerText = 'Select Bubble'
+  //   alert("We are Currently Implementing The Selected Algorithm,Please select Another!");
+  // }
 }
 
 function playEnable(){

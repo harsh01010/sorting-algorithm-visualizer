@@ -143,7 +143,6 @@ const sort = {
     sizeEnable();
   },
 
-
   InsertionSort: async function InsertionSort(){
    shuffleDisable();
    playDisable();
@@ -155,26 +154,49 @@ const sort = {
     //console.log(bar[j].style);
     while(j>=0 && arr[j]>curr)
     { 
-        bar[j].style.backgroundColor = '#ED7D31';
-        bar[j+1].style.backgroundColor = '#ED7D31';
-        renderBars(false);
-        console.log(bar[j+1].style.backgroundColor);
-      await sleep(document.querySelector("#delay").value);
+        bar[j].style.backgroundColor = 'red';
+        bar[j+1].style.backgroundColor = 'red';
+        await sleep(document.querySelector("#delay").value);
+        renderBars(true);
+        //console.log(bar[j+1].style.backgroundColor);
       arr[j+1] = arr[j];
         j = j-1;
       }
-      bar[j+1].style.backgroundColor = 'black';
+      bar[j+1].style.backgroundColor = 'red';
       arr[j+1] = curr;
       await sleep(document.querySelector("#delay").value);
-      renderBars(false);
+      renderBars(true);
    }
    shuffleEnable();
    playEnable();
    sizeEnable();
+  },
+  SelectionSort: async function SelectionSort(){
+    shuffleDisable();
+    playDisable();
+    sizeDisable();
+    for(let i=0; i<arr.length-1; i++)
+    {
+      let bar = document.querySelectorAll(".bar");
+      min_ind = i;
+      for(let j=i+1; j<arr.length; j++)
+      {
+        if(arr[j]<arr[min_ind])
+          min_ind=j;
 
-
+      }
+      bar[i].style.backgroundColor = 'red';
+      bar[min_ind].style.backgroundColor = 'red';
+      await sleep(document.querySelector("#delay").value);
+      renderBars(true);
+      let temp = arr[min_ind];
+      arr[min_ind]=arr[i];
+      arr[i] = temp;
+    }
+    shuffleEnable();
+    playEnable();
+    sizeEnable();
   }
-
 
 };
 

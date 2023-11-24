@@ -196,9 +196,85 @@ const sort = {
     shuffleEnable();
     playEnable();
     sizeEnable();
-  }
+  },
+
+  //merge sort start
+  Merge: async function Merge(l, m, r) {
+    let n1 = m - l + 1;
+    let n2 = r - m;
+  
+    let L = new Array(n1);
+    let R = new Array(n2);
+  
+    for (var i = 0; i < n1; i++)
+      L[i] = arr[l + i];
+    for (var j = 0; j < n2; j++)
+      R[j] = arr[m + 1 + j];
+  
+    var i = 0;
+    var j = 0;
+    var k = l;
+  
+    while (i < n1 && j < n2) {
+      if (L[i] <= R[j]) {
+        arr[k] = L[i];
+        i++;
+      } else {
+        arr[k] = R[j];
+        j++;
+      }
+      k++;
+      await putDelay(); 
+    }
+  
+    while (i < n1) {
+      arr[k] = L[i];
+      i++;
+      k++;
+      await putDelay(); 
+    }
+  
+    while (j < n2) {
+      arr[k] = R[j];
+      j++;
+      k++;
+      await putDelay(); 
+    }
+  },
+  
+  MergeSortFunc: async function MergeSortFunc(l, r) {
+    if (l >= r) return;
+  
+    let m = Math.floor(l + (r - l) / 2);
+  
+    await sort['MergeSortFunc'](l, m);
+    await sort['MergeSortFunc'](m + 1, r);
+  
+    await sort['Merge'](l, m, r); // await the merge operation
+    await putDelay(); // await the delay
+  },
+  
+  MergeSort: async function MergeSort(){
+    shuffleDisable();
+    playDisable();
+    sizeDisable();
+    //console.log(typeof(sort['MergeSortFunc']))
+    sort['MergeSortFunc'](0,arr.length-1);
+    //renderBars(true);
+    shuffleEnable();
+    playEnable();
+    sizeEnable();
+  },
+
+  
+
+  // merge sort end
 
 };
+async function putDelay(){
+  renderBars(true);
+  await sleep(document.querySelector('#delay').value);
+}
 
 
 //shuffling
